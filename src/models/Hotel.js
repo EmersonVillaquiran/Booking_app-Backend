@@ -7,7 +7,7 @@ const Hotel = sequelize.define('hotel', {
         allowNull: false
     },
     description: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false
     },
     price: {
