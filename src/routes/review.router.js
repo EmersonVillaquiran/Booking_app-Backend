@@ -5,11 +5,11 @@ const verifyJWT = require('../utils/verifyJWT');
 const routerReview = express.Router();
 
 routerReview.route('/reviews')
-    .get(verifyJWT, getAll)
+    .get(getAll)
     .post(verifyJWT,create);
 
 routerReview.route('/reviews/:id')
-    .get(verifyJWT,getOne)
+    .get(getOne)
     .delete(verifyJWT,remove)
     .put(verifyJWT,update);
 
