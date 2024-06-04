@@ -33,6 +33,17 @@ test("POST /cities should add a cities", async () => {
         expect(res.body.name).toBe(newCity.name);
 });
 
+test("PUT /cities should update a cities", async () => {
+    const updatedCities = {
+        name: "Nombre Actualizado", 
+
+}
+const res = await request(app).put(`/cities/${id}`).send(updatedCities).set('Authorization', `Bearer ${token}`);
+            console.log(res.body)
+            expect(res.status).toBe(200);
+            expect(res.body.name).toBe(updatedCities.name);
+});
+
 test("DELETE /cities should delete a cities", async () => {
     const res = await request(app).delete(`/cities/${id}`).set('Authorization', `Bearer ${token}`);
     expect(res.status).toBe(204);

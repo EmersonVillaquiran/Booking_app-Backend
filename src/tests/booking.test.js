@@ -31,3 +31,20 @@ test("POST /bookings should add a bookings", async () => {
         expect(res.body.id).toBeDefined();
         expect(res.body.name).toBe(newBooking.name);
 });
+
+test("PUT /bookings should update a bookings", async () => {
+    const updatedBookings = {
+        checkIn: "2024/06/07", 
+
+}
+const res = await request(app).put(`/bookings/${id}`).send(updatedBookings).set('Authorization', `Bearer ${token}`);
+            console.log(res.body)
+            expect(res.status).toBe(200);
+            expect(res.body.name).toBe(updatedBookings.name);
+});
+
+test("DELETE /bookings should delete a bookings", async () => {
+    const res = await request(app)
+    .delete(`/bookings/${id}`).set('Authorization', `Bearer ${token}`);
+        expect(res.status).toBe(204);
+});

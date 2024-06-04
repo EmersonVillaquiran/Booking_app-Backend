@@ -36,6 +36,17 @@ test("POST /hotels should add a hotels", async () => {
         expect(res.body.name).toBe(newHotel.name);
 });
 
+test("PUT /hotels should update a hotels", async () => {
+    const updatedHotels = {
+        name: "Nombre Actualizado", 
+
+}
+const res = await request(app).put(`/hotels/${id}`).send(updatedHotels).set('Authorization', `Bearer ${token}`);
+            console.log(res.body)
+            expect(res.status).toBe(200);
+            expect(res.body.name).toBe(updatedHotels.name);
+});
+
 test("DELETE /hotels should delete a hotels", async () => {
     const res = await request(app).delete(`/hotels/${id}`).set('Authorization', `Bearer ${token}`);
     expect(res.status).toBe(204);

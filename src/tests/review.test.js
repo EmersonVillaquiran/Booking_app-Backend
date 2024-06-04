@@ -36,6 +36,18 @@ test("POST /reviews should add a reviews", async () => {
         expect(res.body.rating).toBe(newReview.rating);
 });
 
+test("PUT /reviews should update a users", async () => {
+    const updatedReviews = {
+        comment: "Comentario Actualizado", 
+
+}
+const res = await request(app).put(`/reviews/${id}`).send(updatedReviews).set('Authorization', `Bearer ${token}`);
+            console.log(res.body)
+            expect(res.status).toBe(200);
+            expect(res.body.name).toBe(updatedReviews.name);
+});
+
+
 test("DELETE /reviews should delete a reviews", async () => {
     const res = await request(app).delete(`/reviews/${id}`).set('Authorization', `Bearer ${token}`);
     expect(res.status).toBe(204);
